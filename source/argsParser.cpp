@@ -28,12 +28,7 @@ Arguments argsParser(const int argc, char* argv[]) {
             }
 
             templateType = templateTypeName.substr(0, separatorPos);
-            try {
-                templateName = templateTypeName.substr(separatorPos + 1);
-            }catch (std::out_of_range&){
-                std::cout << "No name provided after '@'.";
-            }
-
+            templateName = templateTypeName.substr(separatorPos + 1);
         }
     }
 

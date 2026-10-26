@@ -7,4 +7,9 @@ add_executable(templater main.cpp
         source/argsParser.h
         source/argsParser.cpp
         source/templateDefinition.cpp
-        source/templateDefinition.h)
+        source/templateDefinition.h
+        source/platform.h
+        source/yamlParser.cpp
+        source/yamlParser.h
+        source/fileUtils.cpp
+        source/fileUtils.h)
