@@ -2,12 +2,10 @@
 #include <iostream>
 #include "../headers/platform.h"
 #include <cstdlib>
-#include <variant>
 
 //TODO: Support custom paths, and other protocols.
 bool isTemplate(const std::string& templateType) {
     const std::filesystem::path configDirPath = getConfigDir();
-    std::cout << configDirPath << "\n";
     return std::filesystem::exists(configDirPath / templateType);
 }
 
@@ -32,16 +30,4 @@ std::filesystem::path getConfigDir() {
 #endif
 
     return p / "templater";
-}
-
-//TODO: Find reliable rules to determine the protocol in use
-int getTemplateProtocol(const std::string &templateType) {
-    if (templateType.starts_with("https://")) {
-        return REMOTE_PROTOCOL;
-    }
-
-    if (templateType.find('/') == std::variant_npos && templateType.find(':') == std::variant_npos)
-        return DEFAULT_PROTOCOL;
-
-    return UNSUPORTED_PROTOCOL;
 }

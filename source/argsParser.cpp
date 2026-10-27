@@ -1,4 +1,5 @@
 #include "../headers/argsParser.h"
+#include "../headers/platform.h"
 #include <iostream>
 #include <variant>
 
@@ -33,4 +34,16 @@ Arguments argsParser(const int argc, char* argv[]) {
     }
 
     return Arguments{.path = path, .templateType = templateType, .templateName = templateName};
+}
+
+//TODO: Find reliable rules to determine the protocol in use
+TemplateProtocol getTemplateProtocol(const std::string &templateType) {
+    if (templateType.starts_with("https://")) {
+        return REMOTE_PROTOCOL;
+    }
+
+    if (templateType.find('/') == std::variant_npos && templateType.find(':') == std::variant_npos)
+        return DEFAULT_PROTOCOL;
+
+    return UNSUPPORTED_PROTOCOL;
 }

@@ -13,4 +13,6 @@ add_executable(templater main.cpp
         headers/yamlParser.h
         source/fileUtils.cpp
         headers/fileUtils.h
-        tests/argumentParsingTests.cpp)
+        tests/argumentParsingTests.cpp
+        headers/logger.h
+        source/logger.cpp)

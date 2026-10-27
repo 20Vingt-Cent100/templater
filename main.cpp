@@ -2,6 +2,7 @@
 #include <string>
 #include "headers/argsParser.h"
 #include "./headers/fileUtils.h"
+#include "./headers/logger.h"
 
 int main(const int argc, char *argv[]) {
     auto [path, templateType, templateName] = argsParser(argc, argv);
@@ -10,10 +11,22 @@ int main(const int argc, char *argv[]) {
         return 0;
     }
 
-    if (isTemplate(templateType))
-        std::cout<<"Template " << templateType << " found.\n";
-    else
-        std::cout<<"Template type " << templateType<<" doesn't exists.";
+    switch (getTemplateProtocol(templateType)) {
+        case DEFAULT_PROTOCOL:
+            if (isTemplate(templateType))
+                logger::log(logger::TRACE, "Template type: " + templateType + " found.");
+            else
+                logger::log(logger::WARNING, "Template type: " + templateType + " doesn't exist.");
+            break;
+        case REMOTE_PROTOCOL: std::cout<< "Remote Protocol";
+            break;
+        case PATH_PROTOCOL: std::cout<< "PATH_PROTOCOL";
+            break;
+        case UNSUPPORTED_PROTOCOL: std::cout << "Protocol provided is not supported.";
+            break;
+    }
+
+
 
     return 0;
 }
