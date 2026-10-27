@@ -4,12 +4,13 @@ project(templater)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(templater main.cpp
-        source/argsParser.h
+        headers/argsParser.h
         source/argsParser.cpp
         source/templateDefinition.cpp
-        source/templateDefinition.h
-        source/platform.h
+        headers/templateDefinition.h
+        headers/platform.h
         source/yamlParser.cpp
-        source/yamlParser.h
+        headers/yamlParser.h
         source/fileUtils.cpp
-        source/fileUtils.h)
+        headers/fileUtils.h
+        tests/argumentParsingTests.cpp)

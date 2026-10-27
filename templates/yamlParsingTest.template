@@ -1,0 +1,5 @@
+header:
+ templater version: 0.0.1
+ template type: yamlParsingTest
+
+structure:
