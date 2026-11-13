@@ -3,3 +3,9 @@ header:
  template type: yamlParsingTest
 
 structure:
+ root:
+  name: $NAME
+  path: $PATH
+  content:
+   - folder:
+     name:

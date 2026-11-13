@@ -6,7 +6,23 @@
 //TODO: Support custom paths, and other protocols.
 bool isTemplate(const std::string& templateType) {
     const std::filesystem::path configDirPath = getConfigDir();
-    return std::filesystem::exists(configDirPath / templateType);
+    const std::filesystem::path templateTypePath = configDirPath / templateType;
+
+    //TODO: Rework this checking function.
+    return std::filesystem::exists(templateTypePath) && std::filesystem::exists(templateTypePath / (templateType +".template"));
+}
+
+bool isFilePath(const std::string& str) {
+#if defined(PLATFORM_LINUX) || defined(PLATFORM_APPLE)
+    if (str.starts_with("./") || str.starts_with('/') || str.starts_with("~/") || str.starts_with("../"))
+        return true;
+#elif defined(PLATFORM_WINDOWS)
+#endif
+    return false;
+}
+
+std::filesystem::path getCWD() {
+    return std::filesystem::current_path();
 }
 
 std::filesystem::path getConfigDir() {

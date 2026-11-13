@@ -1,8 +1,11 @@
 # Templater
 
-Templater is a command line tool to create new projects faster using templates.
+## Introduction
+Templater is a tool to simplify project initialization and reduce the amount of boilerplate needed. It allows, to copy templates via a single command.
 
-## Roadmap & TODO:
+Every template is defined with a .template file
+
+## Roadmap & TODO
 1. Core Engine
 
    [ ] Template Structuring: Establish basic folder structuring via template definitions.
@@ -24,3 +27,5 @@ Templater is a command line tool to create new projects faster using templates.
    [ ] Lifecycle Hooks: Support pre-init and post-init hooks (such as installation scripts, etc.).
 
    [ ] Remote Sources: Add support for remote template sources/types (such as GitHub repositories via HTTPS/SSH).
+
+## Using Templater

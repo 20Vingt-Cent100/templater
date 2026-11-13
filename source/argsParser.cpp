@@ -3,6 +3,8 @@
 #include <iostream>
 #include <variant>
 
+#include "../headers/fileUtils.h"
+
 Arguments argsParser(const int argc, char* argv[]) {
     std::string path{};
     std::string templateType{};
@@ -36,14 +38,24 @@ Arguments argsParser(const int argc, char* argv[]) {
     return Arguments{.path = path, .templateType = templateType, .templateName = templateName};
 }
 
+Arguments argsParserV2(const int argc, char* argv[]){
+    for (int i = 1; i < argc; i++) {
+
+    }
+}
+
 //TODO: Find reliable rules to determine the protocol in use
 TemplateProtocol getTemplateProtocol(const std::string &templateType) {
-    if (templateType.starts_with("https://")) {
+    if (templateType.starts_with("https://") || templateType.starts_with("http://")) {
         return REMOTE_PROTOCOL;
     }
 
     if (templateType.find('/') == std::variant_npos && templateType.find(':') == std::variant_npos)
         return DEFAULT_PROTOCOL;
+
+    if (isFilePath(templateType) && std::filesystem::exists(templateType)) {
+        return PATH_PROTOCOL;
+    }
 
     return UNSUPPORTED_PROTOCOL;
 }

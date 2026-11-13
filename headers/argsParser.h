@@ -8,11 +8,7 @@ struct Arguments {
 };
 
 Arguments argsParser(int argc, char* argv[]);
-
-// inline int DEFAULT_PROTOCOL = 0;
-// inline int PATH_PROTOCOL = 1;
-// inline int REMOTE_PROTOCOL = 2;
-// inline int UNSUPORTED_PROTOCOL = -1;
+Arguments argsParserV2(int argc, char* argv[]);
 
 enum TemplateProtocol {
     DEFAULT_PROTOCOL,
